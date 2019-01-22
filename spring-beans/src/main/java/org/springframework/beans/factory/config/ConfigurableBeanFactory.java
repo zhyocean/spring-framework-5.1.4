@@ -48,6 +48,10 @@ import org.springframework.util.StringValueResolver;
  * @see org.springframework.beans.factory.ListableBeanFactory
  * @see ConfigurableListableBeanFactory
  */
+
+/**
+ * 提供了配置BeanFactory的各种方法
+ */
 public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, SingletonBeanRegistry {
 
 	/**

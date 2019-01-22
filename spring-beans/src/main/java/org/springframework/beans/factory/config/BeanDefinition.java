@@ -37,6 +37,10 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.beans.factory.support.RootBeanDefinition
  * @see org.springframework.beans.factory.support.ChildBeanDefinition
  */
+
+/**
+ * Spring中各种Bean都用BeanDefinition来描述
+ */
 public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 
 	/**
@@ -100,6 +104,9 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * @see #setParentName
 	 * @see #setFactoryBeanName
 	 * @see #setFactoryMethodName
+	 */
+	/**
+	 * 利用BeanClassName通过反射方式创建Bean实例
 	 */
 	void setBeanClassName(@Nullable String beanClassName);
 

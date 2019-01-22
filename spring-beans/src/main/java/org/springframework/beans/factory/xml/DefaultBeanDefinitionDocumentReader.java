@@ -145,6 +145,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 			}
 		}
 
+		//解析前处理，交给子类实现-----采用模板方法模式
 		preProcessXml(root);
 		parseBeanDefinitions(root, this.delegate);
 		postProcessXml(root);
@@ -173,9 +174,11 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 				if (node instanceof Element) {
 					Element ele = (Element) node;
 					if (delegate.isDefaultNamespace(ele)) {
+						//对默认Bean进行解析
 						parseDefaultElement(ele, delegate);
 					}
 					else {
+						//对自定义命名空间进行解析
 						delegate.parseCustomElement(ele);
 					}
 				}
@@ -315,6 +318,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 						bdHolder.getBeanName() + "'", ele, ex);
 			}
 			// Send registration event.
+			//解析完成后通知相关监听器
 			getReaderContext().fireComponentRegistered(new BeanComponentDefinition(bdHolder));
 		}
 	}

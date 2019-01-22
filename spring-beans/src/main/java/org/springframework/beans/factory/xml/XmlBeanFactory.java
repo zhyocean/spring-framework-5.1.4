@@ -52,8 +52,17 @@ import org.springframework.core.io.Resource;
  */
 @Deprecated
 @SuppressWarnings({"serial", "all"})
+/**
+ * XmlBeanFactory是对IOC容器最基本的实现，可以从Xml中读取读取BeanDefinition
+ *
+ * 该类已经过时了，从类名就可以看出来，已经有横线了
+ * 目前基本都使用ApplicationContext这个高富帅来获得BeanFactory的实现，XmlBeanFactory屌丝有苦也说不出吖
+ */
 public class XmlBeanFactory extends DefaultListableBeanFactory {
 
+	/**
+	 * XmlBeanFactory个性化定制了Xml读取
+	 */
 	private final XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(this);
 
 
@@ -73,6 +82,9 @@ public class XmlBeanFactory extends DefaultListableBeanFactory {
 	 * @param resource the XML resource to load bean definitions from
 	 * @param parentBeanFactory parent bean factory
 	 * @throws BeansException in case of loading or parsing errors
+	 */
+	/**
+	 * 构造器中调用loadBeanDefinition方法加载Bean
 	 */
 	public XmlBeanFactory(Resource resource, BeanFactory parentBeanFactory) throws BeansException {
 		super(parentBeanFactory);

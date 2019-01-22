@@ -113,6 +113,10 @@ import org.springframework.lang.Nullable;
  * @see DisposableBean#destroy
  * @see org.springframework.beans.factory.support.RootBeanDefinition#getDestroyMethodName
  */
+
+/**
+ * 在BeanFactory中只是定义了Bean的基本行为，例如如何获得一个Bean，但是对于怎么去加载、
+ */
 public interface BeanFactory {
 
 	/**
@@ -120,6 +124,10 @@ public interface BeanFactory {
 	 * beans <i>created</i> by the FactoryBean. For example, if the bean named
 	 * {@code myJndiObject} is a FactoryBean, getting {@code &myJndiObject}
 	 * will return the factory, not the instance returned by the factory.
+	 */
+	/**
+	 * 对FactoryBean的转义定义，如果使用Bean的名字检索FactoryBean得到的对象是工厂生成的对象
+	 * 如果需要得到工厂本身，需要转义
 	 */
 	String FACTORY_BEAN_PREFIX = "&";
 
@@ -137,6 +145,9 @@ public interface BeanFactory {
 	 * with the specified name
 	 * @throws BeansException if the bean could not be obtained
 	 */
+	/**
+	 * 根据Bean的name，在ICO容器中获得Bean实例
+	 */
 	Object getBean(String name) throws BeansException;
 
 	/**
@@ -153,6 +164,9 @@ public interface BeanFactory {
 	 * @throws NoSuchBeanDefinitionException if there is no such bean definition
 	 * @throws BeanNotOfRequiredTypeException if the bean is not of the required type
 	 * @throws BeansException if the bean could not be created
+	 */
+	/**
+	 * 根据Bean的name和Class类型获得Bean实例，增加了安全验证机制
 	 */
 	<T> T getBean(String name, Class<T> requiredType) throws BeansException;
 
@@ -335,6 +349,9 @@ public interface BeanFactory {
 	 * @see #isTypeMatch
 	 */
 	@Nullable
+	/**
+	 * 通过name获得Bean的Class对象
+	 */
 	Class<?> getType(String name) throws NoSuchBeanDefinitionException;
 
 	/**

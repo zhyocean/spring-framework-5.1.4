@@ -55,6 +55,13 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.beans.factory.BeanFactory
  * @see org.springframework.core.io.ResourceLoader
  */
+
+/**
+ * 除了IOC容器的基本实现外，还实现了
+ * 							1、国际化(实现了MessageSource接口)、
+ * 							2、访问资源(实现了ResourcePatternResolver接口)、
+ * 							3、支持应用事件(实现了ApplicationEventPublisher接口)
+ */
 public interface ApplicationContext extends EnvironmentCapable, ListableBeanFactory, HierarchicalBeanFactory,
 		MessageSource, ApplicationEventPublisher, ResourcePatternResolver {
 
